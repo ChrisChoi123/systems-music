@@ -78,8 +78,31 @@ struct song_node * rand_song(struct song_node * l) {
   }
   point = l;
   int randNum = rand() % total;
-
+  for (int i = 0; i < randNum; i++) {
+    total++;
+    point = point->next;
+  }
   return point;
 }
-//struct song_node * remove_song(struct song_node * l, struct song_node * rem);
+struct song_node * remove_song(struct song_node * l, struct song_node * rem) {
+  if (l == rem) {
+    struct song_node *pointer = l->next;
+    free(l);
+    return pointer;
+  }
+  if (l->next == NULL) {
+    return l;
+  }
+  struct song_node *point = l;
+  while (point->next != NULL) {
+    if (point->next == rem) {
+      struct song_node *pointer = point->next;
+      point->next = point->next->next;
+      free(pointer);
+      return l;
+    }
+    point = point->next;
+  }
+  return l;
+}
 //struct song_node * free_list(struct song_node * l);
