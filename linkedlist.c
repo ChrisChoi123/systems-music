@@ -105,4 +105,13 @@ struct song_node * remove_song(struct song_node * l, struct song_node * rem) {
   }
   return l;
 }
-//struct song_node * free_list(struct song_node * l);
+struct song_node * free_list(struct song_node * l) {
+  struct song_node *output = l;
+  struct song_node *point = l;
+  while (point != NULL) {
+    output = point->next;
+    free(point);
+    point = output;
+  }
+  return point;
+}
