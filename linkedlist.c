@@ -69,6 +69,17 @@ struct song_node * find_first_song(struct song_node * l, char a) {
   }
   return point;
 }
-//struct song_node * rand_song(struct song_node * l);
+struct song_node * rand_song(struct song_node * l) {
+  struct song_node * point = l;
+  int total = 0;
+  while (point->next != NULL) {
+    total++;
+    point = point->next;
+  }
+  point = l;
+  int randNum = rand() % total;
+
+  return point;
+}
 //struct song_node * remove_song(struct song_node * l, struct song_node * rem);
 //struct song_node * free_list(struct song_node * l);
