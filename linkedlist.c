@@ -1,9 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "head.h"
+#include "linkedlist.h"
 
-
+//sam's funcs
 void print_list(struct node * n) {
   struct node *point = n;
   printf("[");
@@ -56,3 +56,19 @@ struct node * remove_num(struct node *front, int data) {
   }
   return front;
 }
+
+
+//chris's funcs
+struct song_node * find_first_song(struct song_node * l, char a) {
+  struct song_node * point = l;
+  while (point->next != NULL) {
+    if (point->artist == a) {
+      return point;
+    }
+    point = point->next;
+  }
+  return point;
+}
+//struct song_node * rand_song(struct song_node * l);
+//struct song_node * remove_song(struct song_node * l, struct song_node * rem);
+//struct song_node * free_list(struct song_node * l);
