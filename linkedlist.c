@@ -7,7 +7,7 @@
 void print_list(struct song_node * l) {
   struct node *point = l;
   while (point != NULL) {
-    printf(" %s: %s |", point->name, point->artist);
+    printf(" %s: %s |", point->artist, point->name);
     if (point->next != NULL) {
       printf(" ");
     }
