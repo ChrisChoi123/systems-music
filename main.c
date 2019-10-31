@@ -1,7 +1,7 @@
-#include "head.h"
+#include "linkedlist.h"
 
 int main() {
-  struct node *list1 = NULL;
+  /*struct node *list1 = NULL;
   printf("Printing empty list: \n");
   print_list(list1);
   printf("Adding #'s 0-9 to list.\n");
@@ -23,6 +23,6 @@ int main() {
   print_list(list1);
   printf("Freeing the list:\n");
   list1 = free_list(list1);
-  print_list(list1);
+  print_list(list1);*/
   return 0;
 }

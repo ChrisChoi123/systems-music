@@ -5,29 +5,26 @@
 
 //sam's funcs
 void print_list(struct song_node * l) {
-  struct node *point = l;
+  struct song_node *point = l;
   while (point != NULL) {
     printf(" %s: %s |", point->artist, point->name);
-    if (point->next != NULL) {
-      printf(" ");
-    }
     point = point->next;
   }
   printf("\n");
 }
 
-struct song_node * insert_front(struct song_node * l, char n,char a) {
-  struct node *l1 = malloc(sizeof(2)+ sizeof(l1));
-  l1->name = n;
-  l1->artist = a;
+struct song_node * insert_front(struct song_node * l, char *n,char * a) {
+  struct song_node *l1 = malloc(sizeof(2)+ sizeof(l1));
+  strcpy(l1->name,n);
+  strcpy(l1->artist, a);
   l1->next = l;
   return l1;
 }
 
-struct song_node * find_node(struct song_node * l, char n, char a) {
+struct song_node * find_node(struct song_node * l, char * n, char * a) {
   struct song_node * point = l;
   while (point->next != NULL) {
-    if (point->artist == a && point->name = n) {
+    if (point->artist == a && point->name == n) {
       return point;
     }
     point = point->next;
@@ -69,7 +66,7 @@ struct node * remove_num(struct node *front, int data) {
 
 
 //chris's funcs
-struct song_node * find_first_song(struct song_node * l, char a) {
+struct song_node * find_first_song(struct song_node * l, char * a) {
   struct song_node * point = l;
   while (point->next != NULL) {
     if (point->artist == a) {
