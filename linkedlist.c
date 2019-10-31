@@ -4,24 +4,24 @@
 #include "linkedlist.h"
 
 //sam's funcs
-void print_list(struct node * n) {
-  struct node *point = n;
-  printf("[");
+void print_list(struct song_node * l) {
+  struct node *point = l;
   while (point != NULL) {
-    printf("%d", point->num);
+    printf(" %s: %s |", point->name, point->artist);
     if (point->next != NULL) {
       printf(" ");
     }
     point = point->next;
   }
-  printf("]\n");
+  printf("\n");
 }
 
-struct node * insert_front(struct node * n, int i) {
-  struct node *n1 = malloc(sizeof(2)+ sizeof(n1));
-  n1->num = i;
-  n1->next = n;
-  return n1;
+struct song_node * insert_front(struct song_node * l, char n,char a) {
+  struct node *l1 = malloc(sizeof(2)+ sizeof(l1));
+  l1->name = n;
+  l1->artist = a;
+  l1->next = l;
+  return l1;
 }
 
 struct node * free_list(struct node * n) {
