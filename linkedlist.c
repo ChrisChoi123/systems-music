@@ -21,6 +21,30 @@ struct song_node * insert_front(struct song_node * l, char *n,char * a) {
   return l1;
 }
 
+struct song_node * insert_ordered(struct song_node * l, char n, char a) {
+  struct node *point = l;
+  if ((strcmp(point->artis, a) > 0) && (strcmp(point->next->name, a) > 0)) {
+    struct node *l1 = malloc(sizeof(2)+ sizeof(l1));
+    l1->name = n;
+    l1->artist = a;
+    l1->next = point;
+    return l1;
+  }
+  while (point->next != NULL) {
+    if (strcmp(point->next->artis, a) > 0) {
+      if (strcmp(point->next->name, a) > 0) {
+        struct node *l1 = malloc(sizeof(2)+ sizeof(l1));
+        l1->name = n;
+        l1->artist = a;
+        l1->next = point->next;
+        point->next = l1;
+      }
+    }
+    point = point->next;
+  }
+  return l1;
+}
+
 struct song_node * find_node(struct song_node * l, char * n, char * a) {
   struct song_node * point = l;
   while (point->next != NULL) {
@@ -31,39 +55,6 @@ struct song_node * find_node(struct song_node * l, char * n, char * a) {
   }
   return point;
 }
-/*struct node * free_list(struct node * n) {
-  struct node *output = n;
-  struct node *point = n;
-  while (point != NULL) {
-    output = point->next;
-    free(point);
-    point = output;
-  }
-  return point;
-}
-
-struct node * remove_num(struct node *front, int data) {
-  if (front->num == data) {
-    struct node *pointer = front->next;
-    free(front);
-    return pointer;
-  }
-  if (front->next == NULL) {
-    return front;
-  }
-  struct node *point = front;
-  while (point->next != NULL) {
-    if (point->next->num == data) {
-      struct node *pointer = point->next;
-      point->next = point->next->next;
-      free(pointer);
-      return front;
-    }
-    point = point->next;
-  }
-  return front;
-}*/
-
 
 //chris's funcs
 struct song_node * find_first_song(struct song_node * l, char * a) {
