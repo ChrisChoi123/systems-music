@@ -24,7 +24,17 @@ struct song_node * insert_front(struct song_node * l, char n,char a) {
   return l1;
 }
 
-struct node * free_list(struct node * n) {
+struct song_node * find_node(struct song_node * l, char n, char a) {
+  struct song_node * point = l;
+  while (point->next != NULL) {
+    if (point->artist == a && point->name = n) {
+      return point;
+    }
+    point = point->next;
+  }
+  return point;
+}
+/*struct node * free_list(struct node * n) {
   struct node *output = n;
   struct node *point = n;
   while (point != NULL) {
@@ -55,7 +65,7 @@ struct node * remove_num(struct node *front, int data) {
     point = point->next;
   }
   return front;
-}
+}*/
 
 
 //chris's funcs
