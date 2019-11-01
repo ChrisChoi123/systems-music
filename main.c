@@ -14,6 +14,8 @@ int main() {
   a = insert_ordered(a,"Dystopian Overture","Dream Theater" );
   a = insert_ordered(a,"As I Am","Dream Theater" );
   a = insert_ordered(a,"The Remembering","Yes" );
-  print_list(a);
+  //print_list(a);
+
+  print_list(find_node(a, "Visions", "Haken"));
   return 0;
 }

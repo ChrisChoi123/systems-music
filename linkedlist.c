@@ -21,6 +21,7 @@ struct song_node * insert_front(struct song_node * l, char *n,char * a) {
   return l1;
 }
 
+//chris's funcs
 struct song_node * insert_ordered(struct song_node * l, char *n, char *a) {
   struct song_node *point = l;
   if ((strcmp(point->artist, a) == 0) && (strcmp(point->name,n) > 0)) {
@@ -77,8 +78,8 @@ struct song_node * insert_ordered(struct song_node * l, char *n, char *a) {
 
 struct song_node * find_node(struct song_node * l, char * n, char * a) {
   struct song_node * point = l;
-  while (point->next != NULL) {
-    if (point->artist == a && point->name == n) {
+  while (point != NULL) {
+    if (strcmp(point->artist,a) == 0 && strcmp(point->name,n) == 0) {
       return point;
     }
     point = point->next;
@@ -86,7 +87,6 @@ struct song_node * find_node(struct song_node * l, char * n, char * a) {
   return point;
 }
 
-//chris's funcs
 struct song_node * find_first_song(struct song_node * l, char * a) {
   struct song_node * point = l;
   while (point->next != NULL) {
