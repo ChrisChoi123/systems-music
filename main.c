@@ -1,6 +1,7 @@
 #include "linkedlist.h"
 
 int main() {
+  srand(time(NULL));
   struct song_node *a = NULL;
   a = insert_front(a,"La Villa Strangiato","Rush" );
   a = insert_front(a,"The Trees","Rush" );
@@ -14,8 +15,10 @@ int main() {
   a = insert_ordered(a,"Dystopian Overture","Dream Theater" );
   a = insert_ordered(a,"As I Am","Dream Theater" );
   a = insert_ordered(a,"The Remembering","Yes" );
-  //print_list(a);
+  a = remove_song(a, find_node(a,"Visions", "Haken"));
+  a = free_list(a);
+  print_list(a);
+  //print_list(rand_song(a));
 
-  print_list(find_node(a, "Visions", "Haken"));
   return 0;
 }

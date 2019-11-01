@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <time.h>
 #include "linkedlist.h"
 
 //sam's funcs
@@ -89,8 +90,8 @@ struct song_node * find_node(struct song_node * l, char * n, char * a) {
 
 struct song_node * find_first_song(struct song_node * l, char * a) {
   struct song_node * point = l;
-  while (point->next != NULL) {
-    if (point->artist == a) {
+  while (point != NULL) {
+    if (strcmp(point->artist,a) == 0) {
       return point;
     }
     point = point->next;
