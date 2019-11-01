@@ -23,7 +23,14 @@ struct song_node * insert_front(struct song_node * l, char *n,char * a) {
 
 struct song_node * insert_ordered(struct song_node * l, char *n, char *a) {
   struct song_node *point = l;
-  if ((strcmp(point->artist, a) > 0) && (strcmp(point->next->name, a) > 0)) {
+  if ((strcmp(point->artist, a) == 0) && (strcmp(point->name,n) > 0)) {
+    struct song_node *l1 = malloc(sizeof(char[100])*2+ sizeof(l1));
+    strcpy(l1->name, n);
+    strcpy(l1->artist,a);
+    l1->next = point;
+    return l1;
+  }
+  if (strcmp(a,point->next->artist) < 0) {
     struct song_node *l1 = malloc(sizeof(char[100])*2+ sizeof(l1));
     strcpy(l1->name, n);
     strcpy(l1->artist,a);
@@ -31,15 +38,40 @@ struct song_node * insert_ordered(struct song_node * l, char *n, char *a) {
     return l1;
   }
   while (point->next != NULL) {
-    if (strcmp(point->next->artist, a) > 0 &&strcmp(point->next->name, a) > 0) {
+    if (strcmp(point->next->artist, a) == 0) {
+      while (strcmp(a,point->next->artist) == 0) {
+        if (strcmp(n, point->next->name) < 0) {
+          struct song_node *l1 = malloc(sizeof(char[100])*2+ sizeof(l1));
+          strcpy(l1->name, n);
+          strcpy(l1->artist,a);
+          l1->next = point->next;
+          point->next = l1;
+          return l;
+        }
+        point = point->next;
+      }
       struct song_node *l1 = malloc(sizeof(char[100])*2+ sizeof(l1));
       strcpy(l1->name, n);
       strcpy(l1->artist,a);
       l1->next = point->next;
       point->next = l1;
+      return l;
+    }
+    if (strcmp(a,point->next->artist) < 0) {
+      struct song_node *l1 = malloc(sizeof(char[100])*2+ sizeof(l1));
+      strcpy(l1->name, n);
+      strcpy(l1->artist,a);
+      l1->next = point->next;
+      point->next = l1;
+      return l;
     }
     point = point->next;
   }
+  struct song_node *l1 = malloc(sizeof(char[100])*2+ sizeof(l1));
+  strcpy(l1->name, n);
+  strcpy(l1->artist,a);
+  l1->next = point->next;
+  point->next = l1;
   return l;
 }
 
