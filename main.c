@@ -63,7 +63,10 @@ int main() {
   print_list(a);
 
   printf("MUSIC LIBRARY TESTS\n ====================================\n");
-  struct song_node * table[27] = NULL;
+  struct song_node * table[27];
+  for (int i = 0; i < 27; i++) {
+    table[i] = NULL;
+  }
 
   return 0;
 }
