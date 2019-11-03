@@ -14,6 +14,12 @@ void print_list(struct song_node * l) {
   printf("\n");
 }
 
+void print_node(struct song_node * l) {
+  if (l != NULL) {
+    printf(" %s: %s |\n", l->artist, l->name);
+  }
+}
+
 struct song_node * insert_front(struct song_node * l, char *n,char * a) {
   struct song_node *l1 = malloc(sizeof(char[100])*2+ sizeof(l1));
   strcpy(l1->name,n);
@@ -25,14 +31,14 @@ struct song_node * insert_front(struct song_node * l, char *n,char * a) {
 //chris's funcs
 struct song_node * insert_ordered(struct song_node * l, char *n, char *a) {
   struct song_node *point = l;
-  if ((strcmp(point->artist, a) == 0) && (strcmp(point->name,n) > 0)) {
+  if ((strcmp(point->artist, a) == 0) && (strcmp(n, point->name) < 0)) {
     struct song_node *l1 = malloc(sizeof(char[100])*2+ sizeof(l1));
     strcpy(l1->name, n);
     strcpy(l1->artist,a);
     l1->next = point;
     return l1;
   }
-  if (strcmp(a,point->next->artist) < 0) {
+  if (strcmp(a,point->artist) != 0 && strcmp(a,point->next->artist) < 0) {
     struct song_node *l1 = malloc(sizeof(char[100])*2+ sizeof(l1));
     strcpy(l1->name, n);
     strcpy(l1->artist,a);
@@ -88,7 +94,7 @@ struct song_node * find_node(struct song_node * l, char * n, char * a) {
   return point;
 }
 
-struct song_node * find_first_song(struct song_node * l, char * a) {
+struct song_node * find_artist(struct song_node * l, char * a) {
   struct song_node * point = l;
   while (point != NULL) {
     if (strcmp(point->artist,a) == 0) {
@@ -108,7 +114,6 @@ struct song_node * rand_song(struct song_node * l) {
   point = l;
   int randNum = rand() % total;
   for (int i = 0; i < randNum; i++) {
-    total++;
     point = point->next;
   }
   return point;

@@ -18,8 +18,12 @@ void print_artist(struct song_node * l, char * a) {
   printf("\n");
 }
 
-void print_lb(struct song_node * l) {
+void print_lib(struct song_node * l) {
   for (int i = 0, i < 27; i++) {
     print_list(l[i]);
   }
+}
+
+struct song_node * shuffle(struct song_node * l, int num) {
+  
 }
