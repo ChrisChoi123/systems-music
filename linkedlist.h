@@ -11,11 +11,6 @@ struct song_node{
   struct song_node *next;
 };
 
-//struct node {
-  //int num;
-  //struct node *next;
-//};
-
 //sam
 void print_list(struct song_node * l);
 void print_node(struct song_node * l);

@@ -5,32 +5,32 @@
 #include "musiclib.h"
 
 void add_song(struct song_node ** l, char *n,char * a) {
-  if (a < 97 || a > 122) {
+  if (a[0] < 97 || a[0] > 122) {
     insert_ordered(l[0],n,a);
   }
   else {
-    int idx = a - 96;
+    int idx = a[0] - 96;
     insert_ordered(l[idx],n,a);
   }
 }
 
 struct song_node * search_song(struct song_node ** l, char * n, char * a) {
-  if (a < 97 || a > 122) {
+  if (a[0] < 97 || a[0] > 122) {
     return find_node(l[0],n,a);
   }
   else {
-    int idx = a - 96;
+    int idx = a[0] - 96;
     return find_node(l[idx],n,a);
   }
 }
 
 struct song_node * search_artist(struct song_node ** l, char * a) {
-  if (a < 97 || a > 122) {
-    return find_artist(l[0],n,a);
+  if (a[0] < 97 || a[0] > 122) {
+    return find_artist(l[0],a);
   }
   else {
-    int idx = a - 96;
-    return find_artist(l[idx],n,a);
+    int idx = a[0] - 96;
+    return find_artist(l[idx],a);
   }
 }
 
@@ -45,13 +45,14 @@ void print_letter(struct song_node ** l, char a) {
 }
 
 void print_artist(struct song_node ** l, char * a) {
+  int idx = 0;
   if (a[0] < 97 || a[0] > 122) {
-    struct song_node point = find_first_song(l[0], a);
+    int idx = 0;
   }
   else {
-    int idx = a[0] - 96;
-    struct song_node point = find_first_song(l[idx], a);
+    idx = a[0] - 96;
   }
+  struct song_node *point = find_artist(l[idx], a);
   while (strcmp(point->artist,a) == 0) {
     printf(" %s: %s |", point->artist, point->name);
     point = point->next;
@@ -60,7 +61,7 @@ void print_artist(struct song_node ** l, char * a) {
 }
 
 void print_lib(struct song_node ** l) {
-  for (int i = 0, i < 27; i++) {
+  for (int i = 0; i < 27; i++) {
     print_list(l[i]);
   }
 }
@@ -69,8 +70,8 @@ void shuffle(struct song_node ** l, int num) {
   int tot = num;
   while (tot != 0) {
     for (int i = 0;i < 27;i++) {
-      if (rand()%2 = 1) {
-        print_node(rand_song(l[i]);
+      if (rand()%2 == 1) {
+        print_node(rand_song(l[i]));
         tot--;
       }
     }
@@ -91,8 +92,7 @@ void delete_song(struct song_node ** l, struct song_node * rem) {
 }
 
 void clear_lib(struct song_node ** l) {
-  struct song_node * point = l;
   for (int i = 0;i < 27;i++) {
-    free_list{l[i]};
+    free_list(l[i]);
   }
 }
