@@ -5,13 +5,14 @@
 #include "musiclib.h"
 
 void add_song(struct song_node ** l, char *n,char * a) {
+  int idx = 0;
   if (a[0] < 97 || a[0] > 122) {
-    insert_ordered(l[0],n,a);
+    idx = 0;
   }
   else {
-    int idx = a[0] - 96;
-    insert_ordered(l[idx],n,a);
+    idx = a[0] - 96;
   }
+  insert_ordered(l[idx],n,a);
 }
 
 struct song_node * search_song(struct song_node ** l, char * n, char * a) {
@@ -47,7 +48,7 @@ void print_letter(struct song_node ** l, char a) {
 void print_artist(struct song_node ** l, char * a) {
   int idx = 0;
   if (a[0] < 97 || a[0] > 122) {
-    int idx = 0;
+    idx = 0;
   }
   else {
     idx = a[0] - 96;

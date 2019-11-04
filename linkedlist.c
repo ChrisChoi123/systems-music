@@ -10,8 +10,10 @@ void print_list(struct song_node * l) {
   while (point != NULL) {
     printf(" %s: %s |", point->artist, point->name);
     point = point->next;
+    if (point == NULL) {
+      printf("\n");
+    }
   }
-  printf("\n");
 }
 
 void print_node(struct song_node * l) {
@@ -30,6 +32,13 @@ struct song_node * insert_front(struct song_node * l, char *n,char * a) {
 
 //chris's funcs
 struct song_node * insert_ordered(struct song_node * l, char *n, char *a) {
+  if (l == NULL) {
+    struct song_node *l1 = malloc(sizeof(char[100])*2+ sizeof(l1));
+    strcpy(l1->name, n);
+    strcpy(l1->artist,a);
+    l1->next = l;
+    return l1;
+  }
   struct song_node *point = l;
   if ((strcmp(point->artist, a) == 0) && (strcmp(n, point->name) < 0)) {
     struct song_node *l1 = malloc(sizeof(char[100])*2+ sizeof(l1));

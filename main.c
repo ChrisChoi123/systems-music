@@ -82,8 +82,9 @@ int main() {
   add_song(table, "garden of dreams", "the flower kings");
   add_song(table,"the architect","haken" );
   add_song(table, "octavarium", "dream theater");
-  add_song(table, "renai circulation", "namirin");
+  add_song(table, "renai circulation", "*namirin");
   print_lib(table);
+  /*
   printf("====================================\n");
   printf("Testing print_letter:\n");
   print_letter(table, 'r');
@@ -124,6 +125,6 @@ int main() {
   printf("Testing clear_lib:\n");
   clear_lib(table);
   printf("List after clear_lib:");
-  print_lib(table);
+  print_lib(table);*/
   return 0;
 }
