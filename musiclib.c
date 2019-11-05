@@ -12,7 +12,8 @@ void add_song(struct song_node ** l, char *n,char * a) {
   else {
     idx = a[0] - 96;
   }
-  insert_ordered(l[idx],n,a);
+  l[idx] = insert_ordered(l[idx],n,a);
+
 }
 
 struct song_node * search_song(struct song_node ** l, char * n, char * a) {
@@ -71,7 +72,7 @@ void shuffle(struct song_node ** l, int num) {
   int tot = num;
   while (tot != 0) {
     for (int i = 0;i < 27;i++) {
-      if (rand()%2 == 1) {
+      if (rand()%2 == 1 && l[i] != NULL) {
         print_node(rand_song(l[i]));
         tot--;
       }

@@ -63,6 +63,7 @@ int main() {
   printf("List after free_list:");
   print_list(a);
 
+  printf("====================================\n");
   printf("MUSIC LIBRARY TESTS\n ====================================\n");
   struct song_node * table[27];
   for (int i = 0; i < 27; i++) {
