@@ -75,7 +75,7 @@ int main() {
   add_song(table,"dystopian overture","dream theater" );
   add_song(table,"la villa strangiato","rush" );
   add_song(table,"cygnus x-1","rush" );
-  add_song(table,"paranoid android","radiohead" );
+  add_song(table,"no surprises","radiohead" );
   add_song(table,"visions","haken" );
   add_song(table,"the remembering","yes" );
   add_song(table, "the truth will set you free", "the flower kings");
