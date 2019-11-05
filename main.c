@@ -112,7 +112,7 @@ int main() {
   print_list(search_artist(table,"spock's beard"));
   printf("====================================\n");
   printf("Testing shuffle:\n");
-  shuffle(table, 3);
+  shuffle(table, 5);
   printf("====================================\n");
   printf("Testing delete_song:\n");
   printf("Deleting visions by haken:\n");
