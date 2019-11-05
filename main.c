@@ -55,7 +55,7 @@ int main() {
   a = remove_song(a, find_node(a,"garden of dreams", "the flower kings"));
   print_list(a);
   printf("Removing crystallised by haken (list should not change):\n");
-  a = remove_song(a, find_node(a,"visions", "haken"));
+  a = remove_song(a, find_node(a,"crystallised", "haken"));
   print_list(a);
   printf("====================================\n");
   printf("Testing free_list:\n");
@@ -85,13 +85,15 @@ int main() {
   add_song(table, "octavarium", "dream theater");
   add_song(table, "renai circulation", "*namirin");
   print_lib(table);
-  /*
+
   printf("====================================\n");
   printf("Testing print_letter:\n");
   print_letter(table, 'r');
+
   printf("====================================\n");
   printf("Testing print_artist:\n");
   print_artist(table, "rush");
+
   printf("====================================\n");
   printf("Testing search_song:\n");
   printf("looking for the remembering by yes\n");
@@ -110,7 +112,7 @@ int main() {
   print_list(search_artist(table,"spock's beard"));
   printf("====================================\n");
   printf("Testing shuffle:\n");
-  shuffle(table, 5);
+  shuffle(table, 3);
   printf("====================================\n");
   printf("Testing delete_song:\n");
   printf("Deleting visions by haken:\n");
@@ -119,13 +121,13 @@ int main() {
   printf("Removing garden of dreams by the flower kings:\n");
   delete_song(table, search_song(table,"garden of dreams", "the flower kings"));
   print_lib(table);
-  printf("Removing crystallised by haken (list should not change):\n");
-  delete_song(table, search_song(table,"visions", "haken"));
+  printf("Removing renai circulation by *namirin:\n");
+  delete_song(table, search_song(table,"renai circulation", "*namirin"));
   print_lib(table);
   printf("====================================\n");
   printf("Testing clear_lib:\n");
   clear_lib(table);
   printf("List after clear_lib:");
-  print_lib(table);*/
+  print_lib(table);
   return 0;
 }

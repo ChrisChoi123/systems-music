@@ -13,7 +13,6 @@ void add_song(struct song_node ** l, char *n,char * a) {
     idx = a[0] - 96;
   }
   l[idx] = insert_ordered(l[idx],n,a);
-
 }
 
 struct song_node * search_song(struct song_node ** l, char * n, char * a) {
@@ -55,7 +54,10 @@ void print_artist(struct song_node ** l, char * a) {
     idx = a[0] - 96;
   }
   struct song_node *point = find_artist(l[idx], a);
-  while (strcmp(point->artist,a) == 0) {
+  if (point == NULL) {
+    return;
+  }
+  while (point != NULL && strcmp(point->artist,a) == 0) {
     printf(" %s: %s |", point->artist, point->name);
     point = point->next;
   }
@@ -69,32 +71,50 @@ void print_lib(struct song_node ** l) {
 }
 
 void shuffle(struct song_node ** l, int num) {
-  int tot = num;
-  while (tot != 0) {
+  int tot = 0;
+  for (int i = 0;i < 27;i++) {
+    if (l[i] != NULL) {
+      struct song_node * point = l[i];
+      while (point != NULL) {
+        tot++;
+        point = point->next;
+      }
+    }
+  }
+  for (int i = 0;i < num;i++) {
+    int a = rand()%tot;
+    int b = a;
     for (int i = 0;i < 27;i++) {
-      if (rand()%2 == 1 && l[i] != NULL) {
-        print_node(rand_song(l[i]));
-        tot--;
+      if (l[i] != NULL) {
+        struct song_node * point = l[i];
+        while (point != NULL) {
+          if (b != 0) {
+            b--;
+            if (b == 0) {
+              print_node(point);
+            }
+          }
+          point = point->next;
+        }
       }
     }
   }
 }
 
 void delete_song(struct song_node ** l, struct song_node * rem) {
-  char a = rem->artist[0];
-  if (rem == NULL) {
-  }
-  else if (a < 97 || a > 122) {
-    remove_song(l[0],rem);
+  char a = (rem->artist)[0];
+  int idx = 0;
+  if (a < 97 || a > 122) {
+    idx = 0;
   }
   else {
-    int idx = a - 96;
-    remove_song(l[idx],rem);
+    idx = a - 96;
   }
+  l[idx] = remove_song(l[idx],rem);
 }
 
 void clear_lib(struct song_node ** l) {
   for (int i = 0;i < 27;i++) {
-    free_list(l[i]);
+    l[i] = free_list(l[i]);
   }
 }
